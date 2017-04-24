@@ -15,25 +15,34 @@ import java.util.Map;
 @RequestMapping("/testPathVariable")
 public class SpringMVCTest {
     public SpringMVCTest(){}
-    @RequestMapping(value = "/{id}", method = {RequestMethod.GET,RequestMethod.POST})
-    public String testRest(@PathVariable Integer id) {
+    @RequestMapping(value = "/testRest/{id}", method =RequestMethod.GET)
+    public String testRest(@PathVariable("id") Integer id) {
         System.out.println("testRest GET:" + id);
         return "success";
     }
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public String testRest() {
-        System.out.println("testRest POST:");
+    @RequestMapping(value = "/testRest/{id}", method = RequestMethod.POST)
+    public String testRestPost(@PathVariable Integer id) {
+        System.out.println("testRest POST:"+id);
         return "success";
     }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/testRest/{id}", method = RequestMethod.PUT)
     public String testRestPut(@PathVariable Integer id) {
         System.out.println("testRest PUT:" + id);
         return "success";
     }
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "testRest/{id}", method = RequestMethod.DELETE)
     public String testRestDelete(@PathVariable Integer id) {
         System.out.println("testRest DELETE:" + id);
+        return "success";
+    }
+    @RequestMapping(value = "/testRequestParam",method = RequestMethod.POST)
+    public String testRequestParam(@RequestParam(value = "username")String un){
+        System.out.println("testRequestParam:username:"+un);
+        return "success";
+    }
+    @RequestMapping(value = "testParamsAndHeaders",params = {"username","age"},method = RequestMethod.POST)
+    public String testParamsAndHeaders(){
+        System.out.println("testParamsAndHeaders");
         return "success";
     }
     @RequestMapping(value = "/testRequestParam")
@@ -41,19 +50,16 @@ public class SpringMVCTest {
         System.out.println("testRequestParam,username" + un + ",age" + age);
         return "success";
     }
-
     @RequestMapping("/testRequestHeader")
     public String testRequestHeader(@RequestHeader(value = "Accept-Language") String s) {
         System.out.println("testRequestHeader,Accept-Language:" + s);
         return "success";
     }
-
     @RequestMapping("/testCookieValue")
     public String testCookieValue(@CookieValue("JSESSIONID") String sessionID) {
         System.out.println("testCookieValue:" + sessionID);
         return "success";
     }
-
     @RequestMapping("/testPojo")
     public String testPojo(User user) {
         System.out.println("testPojo" + user);

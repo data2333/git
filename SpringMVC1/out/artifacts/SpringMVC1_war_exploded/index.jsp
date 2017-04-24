@@ -12,21 +12,27 @@
 </head>
 <body>
 <a href="/testPathVariable/testRequestParam?username=FUCK&age=11">hello</a>
-<form action="/testPathVariable/1" method="post">
-    <input type="hidden" name="method" value="DELETE">
+<form action="/testPathVariable/testRest/1" method="post">
+    <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="DELETE">
 </form>
+<form action="/testPathVariable/testRest/2" method="post">
+    <input type="hidden" name="method" value="DELETE">
+    <input type="submit" value="TestRest DELETE">
+</form>
 <form action="/testPathVariable/1" method="get">
-    <input type="hidden" name="method" value="PUT">
+    <input type="hidden" name="method" value="DELETE">
     <input type="submit" value="GET">
 </form>
 <form action="/testPathVariable/1" method="post">
     <input type="submit" value="POST">
 </form>
+<form action="/testPathVariable/2" method="DELETE">
+
+</form>
 <a href="/testPathVariable/1">Test Rest Get</a>
 <a href="/testPathVariable/testRequestHeader">testRequestHeader</a>
 <a href="/testPathVariable/testCookieValue">testCookieValue</a>
-
 <form action="/testPathVariable/testPojo" method="post">
     username:<input type="text" name="username">
     <br>
@@ -40,6 +46,8 @@
     <br>
     province:<input type="text" name="address.province">
     <br>
+
+    <br>
     <input type="submit" value="提交">
 </form>
 <a href="/testPathVariable/testPojo">testPojo</a>
@@ -48,6 +56,9 @@
 <a href="/testPathVariable/testModelAndView">testModelAndView</a>
 <a href="/testPathVariable/testMap">testMap</a>
 <br>
+<a href="/testPathVariable/testRequestParam?username=fuck_you">
+    testRequestParam
+</a>
 <a href="/testPathVariable/testSession">testSession</a>
 <form action="/testPathVariable/testModelAttribute" method="post">
     <input type="text" name="id" value="1">
@@ -65,5 +76,8 @@
 <a href="/testPathVariable/testRedirect">testRedirect</a>
 <a href="emp">Add new Employee</a>
 <a href="emps">List All Employees</a>
+<a href="/testPathVariable/testParamsAndHeaders?username=fuck&age=10">
+    Test Method
+</a>
 </body>
 </html>
