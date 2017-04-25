@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt-rt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core-rt" %>
 <html>
 <head>
     <title>$Title$</title>
@@ -77,5 +79,12 @@
 <a href="/testPathVariable/testParamsAndHeaders?username=fuck&age=10">
     Test Method
 </a>
+<fmt:message key="i18n.username">
+
+</fmt:message>
+<fmt:message key="i18n.password">
+
+</fmt:message>
+
 </body>
 </html>

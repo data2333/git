@@ -118,7 +118,6 @@ public class SpringMVCTest {
         System.out.println("testRedirect");
         return "redirect:/WEB-INF/index.jsp";
     }
-
 //    @Autowired
 //    private DepartmentDAO departmentDAO;
 //    @RequestMapping("/emps")

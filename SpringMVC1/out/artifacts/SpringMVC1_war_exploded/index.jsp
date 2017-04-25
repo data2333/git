@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt-rt" %>
 <html>
 <head>
     <title>$Title$</title>
@@ -59,7 +60,7 @@
 </a>
 <a href="/testPathVariable/testSession">testSession</a>
 <form action="/testPathVariable/testModelAttribute" method="post">
-    <%--<input type="hidden" name="id" value="1">--%>
+    <input type="hidden" name="id" value="1">
     username:<input type="text" name="username" value="Tom">
     <br>
     email:<input type="text" name="email" value="tom@qq.com">
@@ -77,5 +78,8 @@
 <a href="/testPathVariable/testParamsAndHeaders?username=fuck&age=10">
     Test Method
 </a>
+<fmt:message key="i18n.username"></fmt:message>
+<fmt:message key="i18n.password"></fmt:message>
+
 </body>
 </html>
