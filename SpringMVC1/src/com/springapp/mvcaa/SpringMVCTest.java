@@ -2,6 +2,7 @@ package com.springapp.mvcaa;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
@@ -10,7 +11,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2017/3/18.
  */
-@SessionAttribute(value = {"fuck"}, types = {String.class})
+@SessionAttribute(value = {"user"},types = {User.class})
 @Controller
 @RequestMapping("/testPathVariable")
 public class SpringMVCTest {
@@ -51,7 +52,7 @@ public class SpringMVCTest {
         return "success";
     }
     @RequestMapping("/testRequestHeader")
-    public String testRequestHeader(@RequestHeader(value = "Accept-Language") String s) {
+    public String testRequestHeader(@RequestHeader(value = "Accept-Encoding") String s) {
         System.out.println("testRequestHeader,Accept-Language:" + s);
         return "success";
     }
@@ -65,17 +66,15 @@ public class SpringMVCTest {
         System.out.println("testPojo" + user);
         return "success";
     }
-
     @RequestMapping("/testServlet")
     public String testServletAPI(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("testServletAPI" + request + "." + response);
         return "success";
     }
-
     @RequestMapping("/testModelAndView")
     public ModelAndView testModelAndView() {
         ModelAndView modelAndView = new ModelAndView("success");
-        modelAndView.addObject("time", new Date());
+        modelAndView.addObject("time", new Date().getTime());
         return modelAndView;
     }
 
@@ -84,9 +83,8 @@ public class SpringMVCTest {
         map.put("names", Arrays.asList("Tom", "Jerry", "Mike"));
         return "success";
     }
-
-    @RequestMapping("testSession")
-    public String testSessionAttribute(Map<String, Object> map) {
+    @RequestMapping("/testSession")
+    public String testSessionAttribute(Map<String,Object>map) {
         User user = new User("Tom", "123456", "ui@qq.com", 15);
         map.put("user", user);
         map.put("school", "at");
@@ -95,24 +93,21 @@ public class SpringMVCTest {
     @ModelAttribute
     public void getUser(@RequestParam(value = "id", required = false) Integer id, Map<String, Object> map) {
         if (id != null) {
-            User user = new User(1, "Tom", "123456", "tom@qq.com", 15);
+            User user = new User(1, "Tom", "123456", "tom@qq.com", 13);
             System.out.println("从数据库中获取一个对象" + user);
             map.put("abc", user);
         }
     }
-
     @RequestMapping("/testModelAttribute")
-    public String testModelAttribute(User user) {
+    public String testModelAttribute(@ModelAttribute("user") User user) {
         System.out.println("testModelAttribute:" + user);
         return "success";
     }
-
     @RequestMapping("/testResolver")
     public String testViewResolver() {
         System.out.println("testViewResolver:");
         return "success";
     }
-
     @RequestMapping("/testView")
     public String testView() {
         System.out.println("testView");

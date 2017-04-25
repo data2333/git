@@ -28,7 +28,6 @@
     <input type="submit" value="POST">
 </form>
 <form action="/testPathVariable/2" method="DELETE">
-
 </form>
 <a href="/testPathVariable/1">Test Rest Get</a>
 <a href="/testPathVariable/testRequestHeader">testRequestHeader</a>
@@ -46,7 +45,6 @@
     <br>
     province:<input type="text" name="address.province">
     <br>
-
     <br>
     <input type="submit" value="提交">
 </form>
@@ -61,7 +59,7 @@
 </a>
 <a href="/testPathVariable/testSession">testSession</a>
 <form action="/testPathVariable/testModelAttribute" method="post">
-    <input type="text" name="id" value="1">
+    <%--<input type="hidden" name="id" value="1">--%>
     username:<input type="text" name="username" value="Tom">
     <br>
     email:<input type="text" name="email" value="tom@qq.com">

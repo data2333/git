@@ -14,9 +14,9 @@
 time:${requestScope.time}
 name:${requestScope.names}
 <br>
-Request user:${requestScope.school}
+Request user:${requestScope.user}
 <br>
-session user:${sessionScope.school}
+session user:<%=session.getAttribute("user")%>
 <br>
 abc user:${requestScope.abc}
 <br>
